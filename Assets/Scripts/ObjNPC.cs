@@ -9,8 +9,7 @@ enum NPCState
 {
     Idle,
     Walking,
-    WaitingAtCounter,
-    Talking
+    WaitingAtCounter
 }
 
 public class ObjNPC : MonoBehaviour
@@ -66,6 +65,11 @@ public class ObjNPC : MonoBehaviour
         // Logic to handle price increase
     }
 
+    public bool IsWaitingAtCounter()
+    {
+        return currState == NPCState.WaitingAtCounter;
+    }
+
     private void StateMachine()
     {
         switch(currState)
@@ -102,9 +106,28 @@ public class ObjNPC : MonoBehaviour
                     isLeaving = true;
                 }
                 break;
-            case NPCState.Talking:
-                // Handle talking behavior
-                break;
         }
+    }
+
+    public void StartConversation(Action onConversationEnd)
+    {
+        // Stop the patience timer
+        if (patienceTimer != null)
+        {
+            patienceTimer.StopAllCoroutines();
+            patienceTimer.gameObject.SetActive(false);
+        }
+        
+        // Start dialogue through DialogueManager
+        DialogueManager.Instance.StartDialogue(this, () => 
+        {
+            // After conversation ends, invoke the callback
+            onConversationEnd?.Invoke();
+            
+            // Resume normal behavior - leave the store
+            targetPosition = exitPosition;
+            isLeaving = true;
+            currState = NPCState.Walking;
+        });
     }
 }
