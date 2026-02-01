@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -16,15 +17,19 @@ public class ObjNPC : MonoBehaviour
 {
     [Header("NPC Behavior Settings")]
     [SerializeField] public Vector3 targetPosition = new Vector3(0f, 0f, 0f);
+    [SerializeField] public Transform targetTransform;
     [SerializeField] public float waitTimeAtCounter = 2.0f; //Time in seconds the NPC will wait before leaving
+    [SerializeField] public float itemPrice = 10.0f; // The price the NPC is willing to pay or sell for
     [SerializeField] public bool isBuyer = true; // Is this NPC buying or selling? (Determines dialogue)
 
     [SerializeField] public Dictionary<string, string> dialogueLines = new Dictionary<string, string>()
     {
-        {"buying", "This thing looks pretty cool... I'll take it."},
-        {"selling", "Can I have this? It reminds me of how much I hate my mother."},
-        {"price raised", "Okay, I guess I can pay a bit more."},
-        {"price lowered", "You make a fair point. I'll give you a better offer."}
+        {"Buying", "This thing looks pretty cool... I'll take it."},
+        {"Selling", "Can I have this? It reminds me of how much I hate my mother."},
+        {"Price Raised", "Okay, I guess I can pay a bit more."},
+        {"Price Lowered", "You make a fair point. I'll give you a better offer."},
+        {"Acceptance", "Deal! Here's the money."},
+        {"Denial", "No thanks, I changed my mind."}
     };
     
     private Vector3 exitPosition;
@@ -38,6 +43,10 @@ public class ObjNPC : MonoBehaviour
     void Start()
     {
         currState = NPCState.Idle;
+        if (targetTransform != null)
+        {
+            targetPosition = targetTransform.position;
+        }
         exitPosition = transform.position;
         agent = GetComponent<NavMeshAgent>();
 
@@ -50,6 +59,11 @@ public class ObjNPC : MonoBehaviour
     void Update()
     {
         StateMachine();
+    }
+
+    public void BarterPriceChange()
+    {
+        // Logic to handle price increase
     }
 
     private void StateMachine()
