@@ -580,7 +580,7 @@ Camera:
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
-  orthographic: 0
+  orthographic: 1
   orthographic size: 5
   m_Depth: -1
   m_CullingMask:
@@ -687,6 +687,85 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1442415615}
   m_CullTransparentMesh: 1
+--- !u!1 &1448959427
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1448959429}
+  - component: {fileID: 1448959428}
+  m_Layer: 0
+  m_Name: FaceAssemblerNPC
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1448959428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1448959427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bed98bb2bb936349ba90c90d216c404, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NPCFaceAssembler
+  facePieceSets:
+  - pieces:
+    - {fileID: -1171108511, guid: 48dfa614398cbce4a9c340cf75a076c6, type: 3}
+    - {fileID: -1415709189, guid: 48dfa614398cbce4a9c340cf75a076c6, type: 3}
+    - {fileID: 1242827669, guid: 48dfa614398cbce4a9c340cf75a076c6, type: 3}
+    - {fileID: 525159384, guid: 48dfa614398cbce4a9c340cf75a076c6, type: 3}
+    - {fileID: -1208728030, guid: 48dfa614398cbce4a9c340cf75a076c6, type: 3}
+    - {fileID: -1594129098, guid: 48dfa614398cbce4a9c340cf75a076c6, type: 3}
+    - {fileID: -46023541, guid: 48dfa614398cbce4a9c340cf75a076c6, type: 3}
+    - {fileID: 615042483, guid: 48dfa614398cbce4a9c340cf75a076c6, type: 3}
+    - {fileID: -1851067217, guid: 48dfa614398cbce4a9c340cf75a076c6, type: 3}
+  - pieces:
+    - {fileID: -1385964837, guid: cce3127e7197eb7488c587ca1365b6e7, type: 3}
+    - {fileID: 1151683746, guid: cce3127e7197eb7488c587ca1365b6e7, type: 3}
+    - {fileID: -14184877, guid: cce3127e7197eb7488c587ca1365b6e7, type: 3}
+    - {fileID: -143828190, guid: cce3127e7197eb7488c587ca1365b6e7, type: 3}
+    - {fileID: 1311966225, guid: cce3127e7197eb7488c587ca1365b6e7, type: 3}
+    - {fileID: 1682593435, guid: cce3127e7197eb7488c587ca1365b6e7, type: 3}
+    - {fileID: -611198922, guid: cce3127e7197eb7488c587ca1365b6e7, type: 3}
+    - {fileID: -1045643140, guid: cce3127e7197eb7488c587ca1365b6e7, type: 3}
+    - {fileID: -530300436, guid: cce3127e7197eb7488c587ca1365b6e7, type: 3}
+  - pieces:
+    - {fileID: -130056317, guid: bbf6907444f61eb44abd65f417f8977e, type: 3}
+    - {fileID: -1909397704, guid: bbf6907444f61eb44abd65f417f8977e, type: 3}
+    - {fileID: 683353129, guid: bbf6907444f61eb44abd65f417f8977e, type: 3}
+    - {fileID: 896910285, guid: bbf6907444f61eb44abd65f417f8977e, type: 3}
+    - {fileID: 1103658844, guid: bbf6907444f61eb44abd65f417f8977e, type: 3}
+    - {fileID: 1320203883, guid: bbf6907444f61eb44abd65f417f8977e, type: 3}
+    - {fileID: -685573737, guid: bbf6907444f61eb44abd65f417f8977e, type: 3}
+    - {fileID: -1969386985, guid: bbf6907444f61eb44abd65f417f8977e, type: 3}
+    - {fileID: -410816884, guid: bbf6907444f61eb44abd65f417f8977e, type: 3}
+  pieceSize: 1
+  gridRows: 3
+  gridCols: 3
+  faceParent: {fileID: 1448959429}
+--- !u!4 &1448959429
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1448959427}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1495585387
 GameObject:
   m_ObjectHideFlags: 0
@@ -881,8 +960,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -60, y: 0}
+  m_SizeDelta: {x: 120, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1575122412
 MonoBehaviour:
@@ -1356,3 +1435,4 @@ SceneRoots:
   - {fileID: 203844589}
   - {fileID: 2089373928}
   - {fileID: 359396494}
+  - {fileID: 1448959429}
